@@ -4,7 +4,8 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-
+import Footer from "../../COMPONENTs/FOOTER/Footer";
+import MenuBar from "../../COMPONENTs/MENU/MenuBar";
 import "./donate_now.css";
 
 const DonateNow = () => {
@@ -48,6 +49,8 @@ const DonateNow = () => {
   };
   return (
     <>
+      <MenuBar />
+
       <div>
         <article
           className="article"
@@ -165,6 +168,7 @@ const DonateNow = () => {
           </Button>
         </Form>
       </div>
+      <Footer />
     </>
   );
 };

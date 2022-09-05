@@ -1,0 +1,32 @@
+.adminTable {
+  width: 65%;
+  margin: 50px;
+}
+
+.pagination {
+  list-style-type: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
+  font-size: 1.2rem;
+  gap: 5px;
+}
+.pagination .page-num {
+  color: #333131;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: 400;
+}
+
+.pagination .page-num:hover {
+  background-color: #333131;
+  color: white;
+}
+
+.pagination .active {
+  background-color: #333131;
+  color: white;
+}
