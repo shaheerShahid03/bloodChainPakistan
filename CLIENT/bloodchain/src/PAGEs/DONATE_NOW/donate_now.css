@@ -1,0 +1,29 @@
+.article {
+  height: 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: grid;
+  place-items: center;
+}
+
+.header {
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  margin: 0px;
+}
+
+.heading h2 {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 35px;
+}
+
+.donation_form {
+  width: 45%;
+  margin: auto auto;
+  padding: 20px;
+  border-radius: 8px;
+  border: 0.5px solid #333131;
+}

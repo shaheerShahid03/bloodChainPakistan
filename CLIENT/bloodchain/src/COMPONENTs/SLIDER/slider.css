@@ -1,0 +1,93 @@
+.frontWrapper {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.wrapperr {
+  display: flex;
+  /* margin-top: -50px; */
+  position: absolute;
+  top: 450px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.register_now_btn {
+  display: flex;
+  padding: none;
+  border-style: none;
+  width: 500px;
+  border-width: 0px !important;
+  outline: none;
+}
+
+.donate_now_btn {
+  display: flex;
+
+  width: 500px;
+  border-width: 0px !important;
+}
+
+.pad {
+  padding-top: 5px;
+  padding-left: 7px;
+  padding-right: 5px;
+}
+
+.reg_icon {
+  padding-top: 32px;
+  padding-right: 5px;
+}
+
+@media screen and (max-width: 1100px) {
+  .register_now_btn {
+    display: flex;
+    padding: none;
+    border-style: none;
+    width: 400px;
+    border-width: 0px !important;
+    outline: none;
+  }
+  .donate_now_btn {
+    display: flex;
+
+    width: 400px;
+    border-width: 0px !important;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .register_now_btn {
+    display: flex;
+    padding: none;
+    border-style: none;
+    width: 300px;
+    border-width: 0px !important;
+    outline: none;
+  }
+  .donate_now_btn {
+    display: flex;
+
+    width: 300px;
+    border-width: 0px !important;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .register_now_btn {
+    display: flex;
+    padding: none;
+    border-style: none;
+    width: 200px;
+    border-width: 0px !important;
+    outline: none;
+  }
+  .donate_now_btn {
+    display: flex;
+
+    width: 200px;
+    border-width: 0px !important;
+  }
+}

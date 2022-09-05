@@ -1,0 +1,12 @@
+.footer_main {
+  margin-top: 10px;
+  text-align: center;
+  padding-top: 8px;
+  height: 40px;
+}
+.goTo_up_icon {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 12px;
+  cursor: pointer;
+}
