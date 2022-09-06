@@ -64,6 +64,7 @@ export default function Slider() {
         <div
           className="register_now_btn bgRed colorWhite "
           style={{ textAlign: "start" }}
+          onClick={() => navigate("/registration")}
         >
           <div className="pad">
             <h5>Register Now</h5>
@@ -80,7 +81,7 @@ export default function Slider() {
         <div
           className="bgBlack colorWhite donate_now_btn"
           style={{ textAlign: "start" }}
-          onClick={() => navigate("/donation")}
+          onClick={() => navigate("/donations")}
         >
           <div className="pad">
             <h5>Donate Now</h5>

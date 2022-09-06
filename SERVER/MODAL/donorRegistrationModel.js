@@ -23,7 +23,12 @@ const donor = new mongoose.Schema({
   phoneNumber: {
     type: Number,
     required: true,
+    unique: true,
+  },
+  date: {
+    type: Date,
+    required: true,
   },
 });
 
-module.exports = mongoose.model("Donor_List", donor);
+module.exports = mongoose.model("Donor Registration", donor);

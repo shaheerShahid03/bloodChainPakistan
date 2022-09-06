@@ -6,46 +6,63 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Footer from "../../COMPONENTs/FOOTER/Footer";
 import MenuBar from "../../COMPONENTs/MENU/MenuBar";
-import "./donate_now.css";
+import "./bleedDonors.css";
 
-const DonateNow = () => {
+const BleedDonors = () => {
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [bloodGroup, setBloodGroup] = React.useState("");
   const [address, setAddress] = React.useState("");
   const [city, setCity] = React.useState("");
   const [phoneNumber, setPhoneNumber] = React.useState("");
+  const [date, setDate] = React.useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(firstName, lastName, bloodGroup, address, city, phoneNumber);
 
-    const response = await fetch("http://localhost:8060/add_donor", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        bloodGroup,
-        address,
-        city,
-        phoneNumber,
-      }),
-    });
+    console.log(
+      firstName,
+      lastName,
+      bloodGroup,
+      address,
+      city,
+      phoneNumber,
+      date
+    );
 
-    const data = await response.status;
-    console.log(firstName, lastName, bloodGroup, address, city, phoneNumber);
-    if (data === 210) {
-      setFirstName("");
-      setLastName("");
-      setBloodGroup("");
-      setAddress("");
-      setCity("");
-      setPhoneNumber("");
+    try {
+      const response = await fetch("http://localhost:8060/add_donor", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          bloodGroup,
+          address,
+          city,
+          phoneNumber,
+          date,
+        }),
+      });
+
+      const data = await response.json();
+      if (response.status === 201) {
+        setFirstName("");
+        setLastName("");
+        setBloodGroup("");
+        setAddress("");
+        setCity("");
+        setPhoneNumber("");
+        setDate(null);
+        return;
+      }
+      alert(data.message);
+    } catch (error) {
+      console.log(error);
     }
-    // console.log(data);
   };
   return (
     <>
@@ -58,25 +75,24 @@ const DonateNow = () => {
         >
           <h1 className="header">Blood Donation</h1>
           <p className="header">
-            Home / <span className="red">donate now</span>
+            Home / <span className="red">Donation</span>
           </p>
         </article>
       </div>
 
       <div className="heading">
-        <h2 className="">Make a Donation</h2>
+        <h2 className="">Ready for Donation</h2>
       </div>
 
       <div className="donation_form">
-        <Form onClick={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <Row className="mb-3">
             <Form.Group className="mb-3" controlId="formGridAddress1">
-              <Form.Label>Your Blood Donation</Form.Label>
+              <Form.Label>Your Blood Type</Form.Label>
               <Form.Select
                 required={true}
                 value={bloodGroup}
                 placeholder="Enter you Blood Group"
-                defaultValue="Choose..."
                 onChange={(e) => {
                   setBloodGroup(e.target.value);
                 }}
@@ -173,4 +189,4 @@ const DonateNow = () => {
   );
 };
 
-export default DonateNow;
+export default BleedDonors;

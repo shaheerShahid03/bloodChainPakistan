@@ -33,28 +33,50 @@ const Dashboard = () => {
     setPageCount(Math.ceil(donors.length / itemsPerPage));
   }, [itemOffset, itemsPerPage, donors]);
 
+  //useEFFECT DONORS DATA
+
+  React.useEffect(() => {
+    getDonors();
+  }, []);
+
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % donors.length;
 
     setItemOffset(newOffset);
   };
 
-  //GET DONORS DATA
+  // FETCH DONORS DATA
 
-  React.useEffect(() => {
-    fetchDonors();
-  }, []);
-  const fetchDonors = async () => {
-    const response = await fetch("http://localhost:8060/all_donor", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  const getDonors = async () => {
+    try {
+      const response = await fetch("http://localhost:8060/all_donor", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    const data = await response.json();
-    console.log(data);
-    setDonors(data);
+      const data = await response.json();
+
+      setDonors(data);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const deleteDonor = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8060/delete/${id}`, {
+        method: "DELETE",
+      });
+
+      if (response.status === 201) {
+        alert("Donor Deleted");
+        getDonors();
+      }
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
@@ -112,6 +134,7 @@ const Dashboard = () => {
       </CDBSidebar>
 
       <div className="adminTable">
+        <h1>Registrations</h1>
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>
@@ -122,14 +145,16 @@ const Dashboard = () => {
               <th>Address</th>
               <th>City</th>
               <th>Phone Number</th>
+              <th>Last Donate Date</th>
+              <th></th>
             </tr>
           </thead>
           {/* <DonorsList donors={donors} /> */}
 
           {currentItems.map((donor, index) => {
             return (
-              <tbody>
-                <tr>
+              <tbody key={index}>
+                <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{donor.firstName}</td>
                   <td>{donor.lastName}</td>
@@ -137,6 +162,16 @@ const Dashboard = () => {
                   <td>{donor.address}</td>
                   <td>{donor.city}</td>
                   <td>{donor.phoneNumber}</td>
+                  <td>{donor.date}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-danger"
+                      onClick={() => deleteDonor(donor._id)}
+                    >
+                      DELETE
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             );
