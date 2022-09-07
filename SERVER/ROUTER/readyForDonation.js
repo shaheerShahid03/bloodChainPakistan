@@ -9,6 +9,6 @@ const readyForDonationRouter = express.Router();
 
 readyForDonationRouter.post("/readytobleed", addDonor_readyForDonation);
 readyForDonationRouter.get("/readytobleedall", getAllDonors);
-readyForDonationRouter.delete("/delreadydonor", deleteDonor);
+readyForDonationRouter.delete("/delreadydonor/:id", deleteDonor);
 
 module.exports = readyForDonationRouter;

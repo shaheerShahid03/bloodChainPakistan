@@ -1,9 +1,9 @@
 const express = require("express");
-const addDonor_Model = require("../MODAL/donorRegistrationModel.js");
+const DonorModel = require("../MODAL/DonorModel");
 
 const addDonor = async (req, res) => {
   try {
-    await addDonor_Model.create({
+    await DonorModel.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       bloodGroup: req.body.bloodGroup,
@@ -11,6 +11,7 @@ const addDonor = async (req, res) => {
       address: req.body.address,
       phoneNumber: req.body.phoneNumber,
       date: req.body.date,
+      status: req.body.status,
     });
     return res.status(201).json("Donor added successfully");
   } catch (error) {
@@ -20,7 +21,7 @@ const addDonor = async (req, res) => {
 
 const allDonors = async (req, res) => {
   try {
-    const donor = await addDonor_Model.find();
+    const donor = await DonorModel.find();
     return res.status(200).json(donor);
   } catch (error) {
     return res.status(402).json("error");
@@ -29,7 +30,7 @@ const allDonors = async (req, res) => {
 
 const deleteDonor = async (req, res) => {
   try {
-    await addDonor_Model.deleteOne({ _id: req.params.id });
+    await DonorModel.deleteOne({ _id: req.params.id });
     res.status(201).json("deleted");
   } catch (error) {
     res.status(402).json({ msg: "error" });

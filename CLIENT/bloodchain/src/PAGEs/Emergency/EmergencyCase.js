@@ -6,16 +6,19 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Footer from "../../COMPONENTs/FOOTER/Footer";
 import MenuBar from "../../COMPONENTs/MENU/MenuBar";
-import "./bleedDonors.css";
+import "./emergency.css";
 
 const BleedDonors = () => {
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [bloodGroup, setBloodGroup] = React.useState("");
-  const [address, setAddress] = React.useState("");
+  const [hospitalAddress, setHospitalAddress] = React.useState("");
   const [city, setCity] = React.useState("");
   const [phoneNumber, setPhoneNumber] = React.useState("");
   const [date, setDate] = React.useState(null);
+  const [dataToBeSent, setDataToBeSent] = React.useState(false);
+
+  const [donors, setDonors] = React.useState([]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,14 +27,14 @@ const BleedDonors = () => {
       firstName,
       lastName,
       bloodGroup,
-      address,
+      hospitalAddress,
       city,
       phoneNumber,
       date
     );
 
     try {
-      const response = await fetch("http://localhost:8060/add_donor", {
+      const response = await fetch("http://localhost:8060/add_emergency_case", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,10 +44,11 @@ const BleedDonors = () => {
           firstName,
           lastName,
           bloodGroup,
-          address,
+          hospitalAddress,
           city,
           phoneNumber,
           date,
+          status: "emergency",
         }),
       });
 
@@ -53,15 +57,42 @@ const BleedDonors = () => {
         setFirstName("");
         setLastName("");
         setBloodGroup("");
-        setAddress("");
+        setHospitalAddress("");
         setCity("");
         setPhoneNumber("");
         setDate(null);
+        getDonors();
         return;
       }
       alert(data.message);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const getDonors = async () => {
+    try {
+      const response = await fetch("http://localhost:8060/readytobleedall", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+
+      const patients = data.filter(
+        (item) =>
+          item.status === "Ready For Donation" &&
+          item.city === city &&
+          item.bloodGroup === bloodGroup
+      );
+      setDonors(patients);
+      setDataToBeSent(true);
+
+      console.log(donors);
+    } catch (error) {
+      alert(error);
     }
   };
   return (
@@ -75,20 +106,20 @@ const BleedDonors = () => {
         >
           <h1 className="header">Blood Donation</h1>
           <p className="header">
-            Home / <span className="red">Donation</span>
+            Home / <span className="red">Emergency Case</span>
           </p>
         </article>
       </div>
 
       <div className="heading">
-        <h2 className="">Ready for Donation</h2>
+        <h2 className="red">Case Details</h2>
       </div>
 
       <div className="donation_form">
         <Form onSubmit={handleSubmit}>
           <Row className="mb-3">
             <Form.Group className="mb-3" controlId="formGridAddress1">
-              <Form.Label>Your Blood Type</Form.Label>
+              <Form.Label>Required Blood Group</Form.Label>
               <Form.Select
                 required={true}
                 value={bloodGroup}
@@ -112,7 +143,7 @@ const BleedDonors = () => {
             </Form.Group>
 
             <Form.Group as={Col} required={true}>
-              <Form.Label>First Name</Form.Label>
+              <Form.Label>Patient First Name</Form.Label>
               <Form.Control
                 required={true}
                 type="text"
@@ -125,7 +156,7 @@ const BleedDonors = () => {
             </Form.Group>
 
             <Form.Group as={Col}>
-              <Form.Label>Last Name</Form.Label>
+              <Form.Label>Patient Last Name</Form.Label>
               <Form.Control
                 required={true}
                 value={lastName}
@@ -139,13 +170,13 @@ const BleedDonors = () => {
           </Row>
 
           <Form.Group className="mb-3" controlId="formGridAddress2">
-            <Form.Label>Address </Form.Label>
+            <Form.Label>Hospital Address </Form.Label>
             <Form.Control
               required={true}
-              value={address}
+              value={hospitalAddress}
               placeholder="Apartment, studio, or floor"
               onChange={(e) => {
-                setAddress(e.target.value);
+                setHospitalAddress(e.target.value);
               }}
             />
           </Form.Group>
@@ -163,7 +194,7 @@ const BleedDonors = () => {
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGrid">
-              <Form.Label>Phone Number</Form.Label>
+              <Form.Label>Attendant Phone Number</Form.Label>
               <Form.Control
                 required={true}
                 value={phoneNumber}
@@ -183,6 +214,26 @@ const BleedDonors = () => {
             Submit
           </Button>
         </Form>
+      </div>
+
+      <div>
+        {dataToBeSent && (
+          <>
+            {donors.map((item, index) => {
+              return (
+                <>
+                  <h5>{item.index}</h5>
+                  <h5>{item.bloodGroup}</h5>
+                  <h5>
+                    {item.firstName} {item.lastName}
+                  </h5>
+
+                  <h5>{item.phoneNumber}</h5>
+                </>
+              );
+            })}
+          </>
+        )}
       </div>
       <Footer />
     </>

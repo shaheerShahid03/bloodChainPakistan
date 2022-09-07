@@ -62,12 +62,12 @@ export default function Slider() {
 
       <div className="wrapperr">
         <div
-          className="register_now_btn bgRed colorWhite "
+          className="register_now_btn bgBlack colorWhite "
           style={{ textAlign: "start" }}
           onClick={() => navigate("/registration")}
         >
           <div className="pad">
-            <h5>Register Now</h5>
+            <h5>Register Now / Donate Now</h5>
             <p>
               Now again is there anyone who loves or purses or desire to obtain
               pain of itself,because it is pain
@@ -79,12 +79,12 @@ export default function Slider() {
         </div>
 
         <div
-          className="bgBlack colorWhite donate_now_btn"
+          className="bgRed colorWhite donate_now_btn"
           style={{ textAlign: "start" }}
-          onClick={() => navigate("/donations")}
+          onClick={() => navigate("/emergency_case")}
         >
           <div className="pad">
-            <h5>Donate Now</h5>
+            <h5>Emergency</h5>
             <p>
               Now again is there anyone who loves or purses or desire to obtain
               pain of itself,because it is pain

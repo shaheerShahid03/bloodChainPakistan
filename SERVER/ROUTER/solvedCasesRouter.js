@@ -7,8 +7,8 @@ const {
 
 const solvedCasesRoutes = express.Router();
 
-solvedCasesRoutes.post("/addsolvedcase", addSolvedCases);
+solvedCasesRoutes.put("/addsolvedcase/:id", addSolvedCases);
 solvedCasesRoutes.get("/getallsolvedcases", getAllDonors);
-solvedCasesRoutes.delete("/delsolvedcase", deleteDonor);
+solvedCasesRoutes.delete("/delsolvedcase/:id", deleteDonor);
 
 module.exports = solvedCasesRoutes;

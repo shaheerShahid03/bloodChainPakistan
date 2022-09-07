@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const donor = new mongoose.Schema({
+const readyForDonationModel = new mongoose.Schema({
   firstName: {
     type: String,
     required: true,
@@ -23,12 +23,15 @@ const donor = new mongoose.Schema({
   phoneNumber: {
     type: Number,
     required: true,
-    unique: true,
   },
   date: {
     type: Date,
-    required: true,
+    default: Date.now,
+  },
+  status: {
+    type: String,
+    default: "Ready For Donation",
   },
 });
 
-module.exports = mongoose.model("Donor Registration", donor);
+module.exports = mongoose.model("Donors List", readyForDonationModel);

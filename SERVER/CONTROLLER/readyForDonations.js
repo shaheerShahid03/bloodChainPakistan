@@ -1,10 +1,10 @@
 const express = require("express");
 
-const readyForDonationModel = require("../MODAL/readyForDonation");
+const DonorModel = require("../MODAL/DonorModel");
 
 const addDonor_readyForDonation = async (req, res) => {
   try {
-    await readyForDonationModel.create({
+    await DonorModel.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       bloodGroup: req.body.bloodGroup,
@@ -20,7 +20,7 @@ const addDonor_readyForDonation = async (req, res) => {
 
 const getAllDonors = async (req, res) => {
   try {
-    const donor = await readyForDonationModel.find();
+    const donor = await DonorModel.find();
     return res.status(200).json(donor);
   } catch (error) {
     return res.status(402).json("error");
@@ -29,7 +29,7 @@ const getAllDonors = async (req, res) => {
 
 const deleteDonor = async (req, res) => {
   try {
-    await readyForDonationModel.deleteOne({ _id: req.params.id });
+    await DonorModel.deleteOne({ _id: req.params.id });
     res.status(201).json("deleted");
   } catch (error) {
     res.status(402).json({ msg: "error" });

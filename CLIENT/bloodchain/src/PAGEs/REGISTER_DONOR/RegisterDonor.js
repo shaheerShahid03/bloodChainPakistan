@@ -21,6 +21,7 @@ const RegisterDonor = () => {
   const [city, setCity] = React.useState("");
   const [phoneNumber, setPhoneNumber] = React.useState("");
   const [date, setDate] = React.useState(null);
+  const [status, setStatus] = React.useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -50,6 +51,7 @@ const RegisterDonor = () => {
           city,
           phoneNumber,
           date,
+          status,
         }),
       });
 
@@ -62,6 +64,7 @@ const RegisterDonor = () => {
         setCity("");
         setPhoneNumber("");
         setDate(null);
+        setStatus("");
         return;
       }
       alert(data.message);
@@ -157,6 +160,22 @@ const RegisterDonor = () => {
                 renderInput={(params) => <TextField {...params} />}
               />
             </LocalizationProvider>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formGridAddress1">
+            <Form.Label>Donation</Form.Label>
+            <Form.Select
+              required={true}
+              value={status}
+              placeholder="Enter you Blood Group"
+              onChange={(e) => {
+                setStatus(e.target.value);
+              }}
+            >
+              <option></option>
+              <option>Ready For Donation</option>
+              <option>Not Now</option>
+            </Form.Select>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formGridAddress2">
