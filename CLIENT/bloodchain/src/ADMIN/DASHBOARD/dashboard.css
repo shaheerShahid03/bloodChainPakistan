@@ -1,5 +1,9 @@
 .adminTable {
-  margin: 30px;
+  margin: 0px;
+}
+
+.title {
+  text-align: center;
 }
 
 .pagination {
@@ -28,4 +32,8 @@
 .pagination .active {
   background-color: #333131;
   color: white;
+}
+
+.align {
+  text-align: center;
 }

@@ -3,6 +3,7 @@ import SideMenu from "../COMPONENTs/SideMenu";
 import ReactPaginate from "react-paginate";
 import Tablee from "../COMPONENTs/Tablee";
 import { useEffect, useState } from "react";
+import "./dashboard.css";
 
 const Solved = () => {
   const [donors, setDonors] = React.useState([]);
@@ -44,7 +45,7 @@ const Solved = () => {
       });
 
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
 
       const solvedCases = data.filter((item) => item.status === "Solved");
       console.log(solvedCases);
@@ -57,12 +58,9 @@ const Solved = () => {
 
   const deleteDonor = async (id) => {
     try {
-      const response = await fetch(
-        `http://localhost:8060/delsolvedcase/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`http://localhost:8060/delete/${id}`, {
+        method: "DELETE",
+      });
 
       if (response.status === 201) {
         alert("Donor Deleted");
@@ -79,7 +77,7 @@ const Solved = () => {
     >
       <SideMenu />
       <div className="adminTable">
-        <h1>Solved Cases</h1>
+        <h1 className="title red">Solved Cases</h1>
 
         <Tablee registeredDonors={currentItems} deleteDonor={deleteDonor} />
 

@@ -5,9 +5,13 @@ const Tablee = ({
   registeredDonors,
   deleteDonor,
   btn,
-  bleededBtn,
+  bleed,
   emergency,
+  checkDonor,
+  bleededBtn,
+  patientDetails,
 }) => {
+  console.log(patientDetails);
   return (
     <>
       <Table striped bordered hover variant="dark">
@@ -30,7 +34,8 @@ const Tablee = ({
             {emergency === true ? <th>Hospital Address</th> : <th>Address</th>}
             <th>City</th>
             <th>Phone Number</th>
-            {!emergency && <th>Last Donate Date</th>}
+            {!emergency && !bleed && <th>Last Donate Date</th>}
+            {bleed && <th> Patient Phone Number</th>}
             <th></th>
           </tr>
         </thead>
@@ -47,16 +52,28 @@ const Tablee = ({
                 <td>{donor.address}</td>
                 <td>{donor.city}</td>
                 <td>{donor.phoneNumber}</td>
-                {!emergency && <td>{donor.date}</td>}
+                {!emergency && !bleed && <td>{donor.date}</td>}
+                {bleed && <td>{patientDetails.phoneNumber}</td>}
                 <td>
-                  <button
-                    type="button"
-                    className="btn btn-danger"
-                    onClick={() => deleteDonor(donor._id)}
-                  >
-                    DELETE
-                  </button>
-                  {btn && (
+                  {!bleed && (
+                    <button
+                      type="button"
+                      className="btn btn-danger"
+                      onClick={() => deleteDonor(donor._id)}
+                    >
+                      DELETE
+                    </button>
+                  )}
+                  {emergency && (
+                    <button
+                      type="button"
+                      className="btn btn-success mx-2"
+                      onClick={() => checkDonor(donor._id)}
+                    >
+                      Check Donor
+                    </button>
+                  )}
+                  {btn || bleed ? (
                     <button
                       type="button"
                       className="btn btn-success mx-2"
@@ -64,6 +81,8 @@ const Tablee = ({
                     >
                       BLEED
                     </button>
+                  ) : (
+                    ""
                   )}
                 </td>
               </tr>

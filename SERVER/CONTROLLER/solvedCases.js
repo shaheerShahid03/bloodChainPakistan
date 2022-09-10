@@ -36,13 +36,4 @@ const getAllDonors = async (req, res) => {
   }
 };
 
-const deleteDonor = async (req, res) => {
-  try {
-    await DonorModel.deleteOne({ _id: req.params.id });
-    res.status(201).json("deleted");
-  } catch (error) {
-    res.status(402).json({ msg: "error" });
-  }
-};
-
-module.exports = { addSolvedCases, getAllDonors, deleteDonor };
+module.exports = { addSolvedCases, getAllDonors };

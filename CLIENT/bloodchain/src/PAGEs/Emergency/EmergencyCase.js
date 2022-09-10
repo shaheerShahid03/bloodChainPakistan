@@ -16,9 +16,6 @@ const BleedDonors = () => {
   const [city, setCity] = React.useState("");
   const [phoneNumber, setPhoneNumber] = React.useState("");
   const [date, setDate] = React.useState(null);
-  const [dataToBeSent, setDataToBeSent] = React.useState(false);
-
-  const [donors, setDonors] = React.useState([]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -61,7 +58,6 @@ const BleedDonors = () => {
         setCity("");
         setPhoneNumber("");
         setDate(null);
-        getDonors();
         return;
       }
       alert(data.message);
@@ -70,31 +66,6 @@ const BleedDonors = () => {
     }
   };
 
-  const getDonors = async () => {
-    try {
-      const response = await fetch("http://localhost:8060/readytobleedall", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const data = await response.json();
-
-      const patients = data.filter(
-        (item) =>
-          item.status === "Ready For Donation" &&
-          item.city === city &&
-          item.bloodGroup === bloodGroup
-      );
-      setDonors(patients);
-      setDataToBeSent(true);
-
-      console.log(donors);
-    } catch (error) {
-      alert(error);
-    }
-  };
   return (
     <>
       <MenuBar />
@@ -216,25 +187,6 @@ const BleedDonors = () => {
         </Form>
       </div>
 
-      <div>
-        {dataToBeSent && (
-          <>
-            {donors.map((item, index) => {
-              return (
-                <>
-                  <h5>{item.index}</h5>
-                  <h5>{item.bloodGroup}</h5>
-                  <h5>
-                    {item.firstName} {item.lastName}
-                  </h5>
-
-                  <h5>{item.phoneNumber}</h5>
-                </>
-              );
-            })}
-          </>
-        )}
-      </div>
       <Footer />
     </>
   );

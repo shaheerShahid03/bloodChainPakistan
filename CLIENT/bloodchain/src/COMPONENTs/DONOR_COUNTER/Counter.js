@@ -9,6 +9,32 @@ import ScrollTrigger from "react-scroll-trigger";
 
 const Counter = () => {
   const [counterOn, setCounterOn] = React.useState(false);
+  const [counter, setCounter] = React.useState();
+
+  React.useEffect(() => {
+    getDonors();
+  }, []);
+
+  const getDonors = async () => {
+    try {
+      const response = await fetch("http://localhost:8060/getallsolvedcases", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+      // console.log(data);
+
+      const solved = data.filter((item) => item.status === "Solved");
+
+      setCounter(solved.length);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   return (
     <>
       <div
@@ -35,7 +61,7 @@ const Counter = () => {
           <OilBarrelIcon style={{ fontSize: 40, color: "#f52f2f" }} />
           {counterOn && (
             <h3>
-              <CountUp start={0} end={2500} duration={1} delay={0} />
+              <CountUp start={0} end={2500 + counter} duration={1} delay={0} />
             </h3>
           )}
           <article>HAPPY DONORS</article>

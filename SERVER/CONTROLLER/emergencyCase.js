@@ -20,4 +20,13 @@ const addEmergencyCase = async (req, res) => {
   }
 };
 
-module.exports = { addEmergencyCase };
+const selectDonor = async (req, res) => {
+  try {
+    const donor = await DonorModel.findOne({ _id: req.params.id });
+    return res.status(201).json(donor);
+  } catch (error) {
+    console.log(error + "error");
+  }
+};
+
+module.exports = { addEmergencyCase, selectDonor };

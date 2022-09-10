@@ -49,7 +49,12 @@ const RegisterDonors = () => {
 
       const data = await response.json();
 
-      const regDonor = data.filter((item) => item.status === "Not Now");
+      const regDonor = data.filter(
+        (item) =>
+          item.status === "Not Now" ||
+          item.status === "Ready For Donation" ||
+          item.status === "Solved"
+      );
       setDonors(regDonor);
     } catch (error) {
       alert(error);
@@ -78,7 +83,7 @@ const RegisterDonors = () => {
       <SideMenu />
 
       <div className="adminTable">
-        <h1>Registrations</h1>
+        <h1 className="title red">Registrations</h1>
 
         <Tablee registeredDonors={currentItems} deleteDonor={deleteDonor} />
 

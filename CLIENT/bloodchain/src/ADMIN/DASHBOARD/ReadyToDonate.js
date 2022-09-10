@@ -1,6 +1,7 @@
 import React from "react";
 import SideMenu from "../COMPONENTs/SideMenu";
 import { useEffect, useState } from "react";
+import "./dashboard.css";
 
 // TABLE
 import Tablee from "../COMPONENTs/Tablee";
@@ -57,12 +58,9 @@ const ReadyToDonate = () => {
   };
   const deleteDonor = async (id) => {
     try {
-      const response = await fetch(
-        `http://localhost:8060/delreadydonor/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`http://localhost:8060/delete/${id}`, {
+        method: "DELETE",
+      });
 
       if (response.status === 201) {
         alert("Donor Deleted");
@@ -72,6 +70,7 @@ const ReadyToDonate = () => {
       alert(error);
     }
   };
+
   const bleededBtn = async (id) => {
     try {
       const response = await fetch(
@@ -99,7 +98,7 @@ const ReadyToDonate = () => {
     >
       <SideMenu />
       <div className="adminTable">
-        <h1>Ready To Donate</h1>
+        <h1 className="title red">Ready To Donate</h1>
         <Tablee
           registeredDonors={currentItems}
           deleteDonor={deleteDonor}
