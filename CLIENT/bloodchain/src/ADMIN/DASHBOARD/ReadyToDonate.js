@@ -1,7 +1,6 @@
 import React from "react";
 import SideMenu from "../COMPONENTs/SideMenu";
 import { useEffect, useState } from "react";
-import "./dashboard.css";
 
 // TABLE
 import Tablee from "../COMPONENTs/Tablee";

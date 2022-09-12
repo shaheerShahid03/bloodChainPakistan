@@ -20,7 +20,7 @@ export default function Slider() {
           <img
             className="d-block w-100"
             style={{ height: "500px" }}
-            src={"slide.jpg"}
+            src={"banner.jpg"}
             alt="First slide"
           />
           {/* <Carousel.Caption>

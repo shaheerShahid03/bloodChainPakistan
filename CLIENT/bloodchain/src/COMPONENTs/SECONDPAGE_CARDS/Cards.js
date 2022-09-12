@@ -7,19 +7,19 @@ const Cards = () => {
     {
       title: "Become a Donor",
       text: " Some quick example text to build on the card title and make up the  bulk of the card's content.",
-      img: "slide.jpg",
+      img: "donateLife.jpg",
       id: 1,
     },
     {
       title: "Why Donate?",
       text: " Some quick example text to build on the card title and make up the  bulk of the card's content.",
-      img: "slide.jpg",
+      img: "whyDonate.jpg",
       id: 2,
     },
     {
       title: "How Donation Helps",
       text: " Some quick example text to build on the card title and make up the  bulk of the card's content.",
-      img: "slide.jpg",
+      img: "donationHelps.jpeg",
       id: 3,
     },
   ];

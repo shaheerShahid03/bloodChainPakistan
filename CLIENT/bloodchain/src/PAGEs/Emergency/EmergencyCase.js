@@ -73,7 +73,7 @@ const BleedDonors = () => {
       <div>
         <article
           className="article"
-          style={{ backgroundImage: `url(${"slide3.jpg"})` }}
+          style={{ backgroundImage: `url(${"banner.jpg"})` }}
         >
           <h1 className="header">Blood Donation</h1>
           <p className="header">
@@ -121,7 +121,7 @@ const BleedDonors = () => {
                 value={firstName}
                 placeholder="First Name"
                 onChange={(e) => {
-                  setFirstName(e.target.value);
+                  setFirstName(e.target.value.toLowerCase());
                 }}
               />
             </Form.Group>
@@ -134,7 +134,7 @@ const BleedDonors = () => {
                 type="text"
                 placeholder="Last Name"
                 onChange={(e) => {
-                  setLastName(e.target.value);
+                  setLastName(e.target.value.toLowerCase());
                 }}
               />
             </Form.Group>
@@ -147,7 +147,7 @@ const BleedDonors = () => {
               value={hospitalAddress}
               placeholder="Apartment, studio, or floor"
               onChange={(e) => {
-                setHospitalAddress(e.target.value);
+                setHospitalAddress(e.target.value.toLowerCase());
               }}
             />
           </Form.Group>
@@ -159,7 +159,7 @@ const BleedDonors = () => {
                 required={true}
                 value={city}
                 onChange={(e) => {
-                  setCity(e.target.value);
+                  setCity(e.target.value.toLowerCase());
                 }}
               />
             </Form.Group>

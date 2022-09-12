@@ -79,7 +79,11 @@ const RegisterDonor = () => {
       <div>
         <article
           className="article"
-          style={{ backgroundImage: `url(${"slide3.jpg"})` }}
+          style={{
+            backgroundImage: `url(${"banner.jpg"})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
         >
           <h1 className="header">Blood Donation</h1>
           <p className="header">
@@ -127,7 +131,7 @@ const RegisterDonor = () => {
                 value={firstName}
                 placeholder="First Name"
                 onChange={(e) => {
-                  setFirstName(e.target.value);
+                  setFirstName(e.target.value.toLowerCase());
                 }}
               />
             </Form.Group>
@@ -140,7 +144,7 @@ const RegisterDonor = () => {
                 type="text"
                 placeholder="Last Name"
                 onChange={(e) => {
-                  setLastName(e.target.value);
+                  setLastName(e.target.value.toLowerCase());
                 }}
               />
             </Form.Group>
@@ -149,6 +153,7 @@ const RegisterDonor = () => {
           <Form.Group className="mb-3" controlId="formGridDate">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
+                format="MM-dd-y"
                 disableFuture
                 label="Last Donation Date"
                 openTo="year"
@@ -185,7 +190,7 @@ const RegisterDonor = () => {
               value={address}
               placeholder="Apartment, studio, or floor"
               onChange={(e) => {
-                setAddress(e.target.value);
+                setAddress(e.target.value.toLowerCase());
               }}
             />
           </Form.Group>
@@ -197,7 +202,7 @@ const RegisterDonor = () => {
                 required={true}
                 value={city}
                 onChange={(e) => {
-                  setCity(e.target.value);
+                  setCity(e.target.value.toLowerCase());
                 }}
               />
             </Form.Group>

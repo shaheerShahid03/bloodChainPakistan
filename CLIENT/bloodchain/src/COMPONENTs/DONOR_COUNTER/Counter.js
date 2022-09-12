@@ -39,7 +39,12 @@ const Counter = () => {
     <>
       <div
         className="wrap colorWhite"
-        style={{ backgroundImage: `url(${"slide3.jpg"})` }}
+        style={{
+          backgroundImage: `url(${"whyDonate.jpg"})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
         <ScrollTrigger
           onEnter={() => setCounterOn(true)}
@@ -64,7 +69,7 @@ const Counter = () => {
               <CountUp start={0} end={2500 + counter} duration={1} delay={0} />
             </h3>
           )}
-          <article>HAPPY DONORS</article>
+          <article>HAPPY RECIPIENTs</article>
         </div>
 
         <div>
@@ -84,7 +89,7 @@ const Counter = () => {
               <CountUp start={0} end={2000} duration={1} delay={0.001} />
             </h3>
           )}
-          <article>HAPPY RECIPIENT</article>
+          <article>HAPPY DONORs</article>
         </div>
       </div>
     </>
