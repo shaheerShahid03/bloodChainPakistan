@@ -1,0 +1,42 @@
+.bootstrapLogo {
+  width: 90px;
+  height: 90px;
+}
+
+.con {
+  height: 617px;
+}
+.main-wrapper {
+  width: 440px;
+  margin: auto auto;
+
+  box-shadow: 3px 0 10px -1px rgb(31 73 125 / 80%),
+    3px 0 10px -1px rgb(31 73 125 / 80%);
+}
+li {
+  text-decoration: none;
+  list-style-type: none;
+}
+.label {
+  text-align: center;
+  margin-top: 2px;
+}
+.p:hover {
+  text-decoration: solid;
+  color: blue;
+  cursor: pointer;
+}
+.asd {
+  background: whitesmoke;
+  padding: 25px;
+  padding-top: 10px;
+  border-radius: 15px;
+}
+
+.logo {
+  height: 60px;
+  background-color: transparent;
+  width: 60px;
+  margin-top: 2px;
+  padding-bottom: 2px;
+}

@@ -112,7 +112,6 @@ const RegisterDonor = () => {
                 <option></option>
                 <option>A+</option>
 
-                <option>A+</option>
                 <option>A-</option>
 
                 <option>B+</option>
@@ -120,6 +119,8 @@ const RegisterDonor = () => {
 
                 <option>O+</option>
                 <option>O-</option>
+                <option>AB+</option>
+                <option>AB-</option>
               </Form.Select>
             </Form.Group>
 

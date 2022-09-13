@@ -10,6 +10,7 @@ const Tablee = ({
   checkDonor,
   bleededBtn,
   patientDetails,
+  patientPhoneNUm,
 }) => {
   console.log(patientDetails);
   return (
@@ -53,7 +54,9 @@ const Tablee = ({
                 <td>{donor.city}</td>
                 <td>{donor.phoneNumber}</td>
                 {!emergency && !bleed && <td>{donor.date}</td>}
-                {bleed && <td>{patientDetails.phoneNumber}</td>}
+
+                {/* {bleed && <td>{patientDetails.phoneNumber}</td>} */}
+
                 <td>
                   {!bleed && (
                     <button

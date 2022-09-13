@@ -110,6 +110,8 @@ const BleedDonors = () => {
 
                 <option>O+</option>
                 <option>O-</option>
+                <option>AB+</option>
+                <option>AB-</option>
               </Form.Select>
             </Form.Group>
 

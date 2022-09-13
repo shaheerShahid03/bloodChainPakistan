@@ -96,6 +96,10 @@ const MenuBar = () => {
           <Link to="" className=" MenunoStyle">
             <li>Contact</li>
           </Link>
+
+          <Link to="/donorslist" className=" MenunoStyle">
+            <li>Donors List</li>
+          </Link>
         </div>
       </div>
 

@@ -8,6 +8,9 @@ import RegisterDonor from "./PAGEs/REGISTER_DONOR/RegisterDonor";
 import EmergencyCase from "./PAGEs/Emergency/EmergencyCase";
 import Solved from "./ADMIN/DASHBOARD/Solved";
 import ReadyToDonate from "./ADMIN/DASHBOARD/ReadyToDonate";
+import SignIn from "./PAGEs/SIGNIN/SignIn";
+import DonorsList from "./PAGEs/DONORS_LIST/DonorsList";
+import ProtectedRoutes from "./COMPONENTs/PROTEXTED_ROUTES/index";
 
 function App() {
   return (
@@ -18,6 +21,15 @@ function App() {
 
           <Route path="/registration" element={<RegisterDonor />} />
           <Route path="/emergency_case" element={<EmergencyCase />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route
+            path="/donorslist"
+            element={
+              <ProtectedRoutes>
+                <DonorsList />
+              </ProtectedRoutes>
+            }
+          />
 
           <Route path="/admin" element={<DashBoard />} />
           <Route path="/registered" element={<RegisterDonors />} />

@@ -17,26 +17,32 @@
   color: #333131;
 }
 .mainDiv {
-  margin: 0;
+  /* margin: 0; */
   padding: 0;
 }
 
 .wrapper {
   display: flex;
   flex-wrap: wrap;
+  /* width: 1460px; */
+  /* width: 1464px; */
 }
 .rowOne {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   padding: 5px;
-  flex: 0.9;
+  flex: 1;
   /* width: 950px; */
 }
 
 .rowTwo {
+  /* display: flex;
+  width: 1464px; */
+  width: 430px;
   padding-left: 35px;
-  padding-right: 2%;
+  margin-right: 0px;
+  /* width: 00px; */
   /* width: 100%; */
   /* flex: 0.23; */
 }
@@ -49,11 +55,6 @@
   justify-content: flex-end;
   padding-right: 8px;
 }
-/* 
-.lewanay {
-  width: 80%;
-  margin: auto auto;
-} */
 
 .rowFour {
   display: flex;
@@ -66,12 +67,12 @@
 }
 
 .li {
-  padding-right: 132px;
+  padding-right: 90px;
   list-style-type: none;
   text-decoration: none;
 }
 .location {
-  padding-right: 25px;
+  padding-right: 40px;
   list-style-type: none;
   text-decoration: none;
 }
@@ -82,6 +83,7 @@
   margin-right: 30px;
   cursor: pointer;
 }
+
 .icons {
   padding-left: 14px;
   cursor: pointer;
