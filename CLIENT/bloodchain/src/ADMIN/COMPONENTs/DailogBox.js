@@ -4,7 +4,14 @@ import Modal from "react-bootstrap/Modal";
 import ReactPaginate from "react-paginate";
 import Tablee from "../COMPONENTs/Tablee";
 
-function DailogBox({ patientDetails, show, setShow, matched, setMatchDonors }) {
+function DailogBox({
+  patientDetails,
+  show,
+  setShow,
+  matched,
+  setMatchDonors,
+  patientPhoneNUm,
+}) {
   const values = [true];
   const [fullscreen, setFullscreen] = useState(true);
   const bleed = true;
@@ -46,8 +53,8 @@ function DailogBox({ patientDetails, show, setShow, matched, setMatchDonors }) {
       );
 
       if (response.status === 201) {
-        // alert("status updated");
-
+        alert("status updated");
+        setMatchDonors(matched.filter((item) => item._id !== id));
         setShow(false);
       }
     } catch (error) {
@@ -67,7 +74,7 @@ function DailogBox({ patientDetails, show, setShow, matched, setMatchDonors }) {
         fullscreen={fullscreen}
         onHide={() => {
           setShow(false);
-          setMatchDonors("");
+          // setMatchDonors("");
         }}
       >
         <Modal.Header closeButton>
@@ -82,6 +89,7 @@ function DailogBox({ patientDetails, show, setShow, matched, setMatchDonors }) {
             bleed={bleed}
             bleededBtn={bleededBtn}
             patientDetails={patientDetails}
+            patientPhoneNUm={patientPhoneNUm}
           />
 
           <ReactPaginate

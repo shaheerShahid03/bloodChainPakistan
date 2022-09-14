@@ -5,19 +5,19 @@ const BestServices = () => {
     {
       title: "Blood Donation",
       text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-      img: "slide.jpg",
+      img: "cover.jpg",
       id: "01",
     },
     {
       title: "Health Checkup",
       text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-      img: "slide2.jpg",
+      img: "cover.jpg",
       id: "02",
     },
     {
       title: "Blood Bank",
       text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-      img: "slide3.jpg",
+      img: "cover.jpg",
       id: "03",
     },
   ];

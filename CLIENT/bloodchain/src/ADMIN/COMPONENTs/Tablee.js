@@ -12,7 +12,6 @@ const Tablee = ({
   patientDetails,
   patientPhoneNUm,
 }) => {
-  console.log(patientDetails);
   return (
     <>
       <Table striped bordered hover variant="dark">
@@ -55,7 +54,10 @@ const Tablee = ({
                 <td>{donor.phoneNumber}</td>
                 {!emergency && !bleed && <td>{donor.date}</td>}
 
-                {/* {bleed && <td>{patientDetails.phoneNumber}</td>} */}
+                {bleed && patientDetails !== undefined && (
+                  <td>{patientDetails.phoneNumber}</td>
+                )}
+                {bleed && <td>{patientPhoneNUm}</td>}
 
                 <td>
                   {!bleed && (
@@ -76,7 +78,7 @@ const Tablee = ({
                       Check Donor
                     </button>
                   )}
-                  {btn || bleed ? (
+                  {btn && (
                     <button
                       type="button"
                       className="btn btn-success mx-2"
@@ -84,8 +86,15 @@ const Tablee = ({
                     >
                       BLEED
                     </button>
-                  ) : (
-                    ""
+                  )}
+                  {bleed && (
+                    <button
+                      type="button"
+                      className="btn btn-success mx-2"
+                      onClick={() => bleededBtn(donor._id)}
+                    >
+                      BLEED
+                    </button>
                   )}
                 </td>
               </tr>

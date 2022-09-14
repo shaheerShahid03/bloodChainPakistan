@@ -36,7 +36,7 @@ const Emergency = () => {
 
   React.useEffect(() => {
     getDonors();
-  }, []);
+  }, [matchDonors]);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % donors.length;
@@ -93,9 +93,7 @@ const Emergency = () => {
       const data = await response.json();
 
       setPatientDetails(data);
-      console.log(data);
 
-      // console.log(allDonors);
       const match = allDonors.filter(
         (value) =>
           value.status === "Ready For Donation" &&
@@ -105,7 +103,6 @@ const Emergency = () => {
 
       setShowDailogBox(true);
       setMatchDonors(match);
-      console.log(matchDonors);
     } catch (error) {
       alert(error);
     }
@@ -133,6 +130,7 @@ const Emergency = () => {
             show={showDailogBox}
             setShow={setShowDailogBox}
             patientDetails={patientDetails}
+            checkDonor={checkDonor}
           />
         )}
 

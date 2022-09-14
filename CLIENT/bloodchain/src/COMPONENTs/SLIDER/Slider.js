@@ -20,7 +20,7 @@ export default function Slider() {
           <img
             className="d-block w-100"
             style={{ height: "500px" }}
-            src={"banner.jpg"}
+            src={"cover.jpg"}
             alt="First slide"
           />
           {/* <Carousel.Caption>
@@ -33,7 +33,7 @@ export default function Slider() {
           <img
             className="d-block w-100"
             style={{ height: "500px" }}
-            src={"slide2.jpg"}
+            src={"cover.jpg"}
             alt="Second slide"
           />
 
@@ -47,7 +47,7 @@ export default function Slider() {
           <img
             className="d-block w-100"
             style={{ height: "500px" }}
-            src={"slide3.jpg"}
+            src={"cover.jpg"}
             alt="Third slide"
           />
 

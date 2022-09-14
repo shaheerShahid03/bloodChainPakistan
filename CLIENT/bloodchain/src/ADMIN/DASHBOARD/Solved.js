@@ -45,10 +45,8 @@ const Solved = () => {
       });
 
       const data = await response.json();
-      // console.log(data);
 
       const solvedCases = data.filter((item) => item.status === "Solved");
-      console.log(solvedCases);
 
       setDonors(solvedCases);
     } catch (error) {

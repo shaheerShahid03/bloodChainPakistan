@@ -17,7 +17,7 @@ const BloodReq = () => {
 
   React.useEffect(() => {
     getDonors();
-  }, []);
+  }, [matchDonors]);
 
   const getDonors = async () => {
     try {
@@ -41,7 +41,6 @@ const BloodReq = () => {
   const checkDonor = async (e) => {
     e.preventDefault();
     try {
-      console.log(allDonors);
       const match = allDonors.filter(
         (value) =>
           value.status === "Ready For Donation" &&
@@ -51,7 +50,6 @@ const BloodReq = () => {
 
       setShowDailogBox(true);
       setMatchDonors(match);
-      console.log(matchDonors + " 1");
     } catch (error) {
       alert(error);
     }
